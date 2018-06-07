@@ -13,8 +13,9 @@ ENV PATH $BUNDLE_BIN:$PATH
 
 RUN curl --silent --location https://rpm.nodesource.com/setup_8.x | bash - \
 	&& curl --output /usr/local/bin/phantomjs https://s3.amazonaws.com/circle-downloads/phantomjs-2.1.1 \
+	&& chmod +x /usr/local/bin/phantomjs \
 	&& yum update -y \
-	&& yum install -y libpng12 libjpeg-turbo wget git curl nodejs sudo \
+	&& yum install -y libpng12 libjpeg-turbo wget git curl nodejs sudo libXrender fontconfig libXext ImageMagick \
 	&& yum clean all \
   && rm -f /etc/localtime && ln -s /usr/share/zoneinfo/Europe/Prague /etc/localtime \
 	&& localedef -v -c -i en_US -f UTF-8 en_US.UTF-8 || true \
